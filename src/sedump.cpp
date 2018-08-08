@@ -37,7 +37,7 @@ std::vector<std::string> SEDump::dumpStringList(std::string format, ...)
     auto paramCount = (dotcount + 1) * 2;
 
     va_list list;
-    va_start(list, paramCount);
+    va_start(list, format);
 
     resStringList = dumpStringList(format, list);
 
