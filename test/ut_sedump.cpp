@@ -126,5 +126,20 @@ TEST(SEDump, DumpSimpleStruct) {
         EXPECT_EQ(ivec, dumpStringList);
     }
 
+    class Test4
+    {
+    public:
+        int a;
+    };
+    {
+        Test4 t;
+        t.a = 15;
+
+        auto dumpStringList = SEDump::dumpStringList("int", "a", t.a);
+        vector<string> ivec;
+        ivec.push_back("a:15");
+        EXPECT_EQ(ivec, dumpStringList);
+    }
+
 }
 

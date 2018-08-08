@@ -19,7 +19,7 @@ string SEDump::dumpString(string format, ...)
     auto paramCount = (dotcount + 1) * 2;
 
     va_list list;
-    va_start(list, paramCount);
+    va_start(list, format);
 
     resString = dumpStringList(format, list);
 
