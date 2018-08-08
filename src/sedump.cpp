@@ -116,7 +116,20 @@ std::vector<std::string> SEDump::dumpStringList(std::string format, va_list list
                     }
 
                     vec.push_back(curVal);
+                }
+                else if (type == "BOOL" && i % 2 != 0)
+                {
+                    int *p = (int *)value;
+                    if (p[j] > 0)
+                    {
+                        curVal = "true";
+                    }
+                    else
+                    {
+                        curVal = "false";
+                    }
 
+                    vec.push_back(curVal);
                 }
                 else if (type == "char" && i % 2 != 0)
                 {
@@ -155,6 +168,18 @@ std::vector<std::string> SEDump::dumpStringList(std::string format, va_list list
                 curVal = std::to_string(value);
             }
             else if (curType == "bool" && i % 2 != 0)
+            {
+                auto value = va_arg(list, int);
+                if (value > 0)
+                {
+                    curVal = "true";
+                }
+                else
+                {
+                    curVal = "false";
+                }
+            }
+            else if (curType == "BOOL" && i % 2 != 0)
             {
                 auto value = va_arg(list, int);
                 if (value > 0)
